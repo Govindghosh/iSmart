@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useForgotPassword from "../../hooks/user/useForgotPassword";
 import bannerImage from "../../assets/banner-image.png";
-import logo from "../../assets/logoNew.png";
+import logo from "../../assets/logoNew.svg";
 import { FaEnvelope } from "react-icons/fa";
 
 const ForgotPasswordForm = () => {

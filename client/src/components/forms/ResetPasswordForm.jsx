@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useResetPassword from "../../hooks/user/useResetPassword";
 import bannerImage from "../../assets/banner-image.png";
-import logo from "../../assets/logoNew.png";
+import logo from "../../assets/logoNew.svg";
 import { FaLock } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from "react";

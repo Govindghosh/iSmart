@@ -17,15 +17,15 @@ import logo from "../assets/logoNew.svg";
 
 const navItems = [
   { label: "My Profile", icon: FaUser, path: "/profile" },
-  { label: "Department", icon: FaBuilding, path: "/department", role: ["superadmin","admin", "manager", "hr", "head"] },
-  { label: "HR", icon: FaBriefcase, path: "/hr", role: ["superadmin","admin", "manager", "hr",] },
+  { label: "Department", icon: FaBuilding, path: "/department", role: ["superadmin", "admin", "manager", "hr", "head"] },
+  { label: "HR", icon: FaBriefcase, path: "/hr", role: ["superadmin", "admin", "manager", "hr"] },
   { label: "Attendance", icon: FaClock, path: "/attendance" },
-  { label: "After Sales", icon: FaTools, path: "/aftersales", role: ["superadmin","admin", "manager", "hr", "support"] },
-  { label: "Data Mining", icon: FaChartLine, path: "/datamining", role: ["superadmin","admin", "manager", "hr", "analyst"] },
-  { label: "Job Application", icon: FaBriefcase, path: "/jobapplication", role: ["superadmin","admin", "manager", "hr", "hr"] },
-  { label: "Sales", icon: FaChartLine, path: "/sales", role: ["superadmin","admin", "manager", "sales"] },
-  { label: "Training", icon: FaChalkboardTeacher, path: "/training", role: ["superadmin","admin", "manager", "hr", "trainer"] },
-  { label: "Telecom", icon: FaPhoneAlt, path: "/telecom", role: ["superadmin","admin", "manager", "hr"] },
+  { label: "After Sales", icon: FaTools, path: "/aftersales", role: ["superadmin", "admin", "manager", "hr", "support"] },
+  { label: "Data Mining", icon: FaChartLine, path: "/datamining", role: ["superadmin", "admin", "manager", "hr", "analyst"] },
+  { label: "Job Application", icon: FaBriefcase, path: "/jobapplication", role: ["superadmin", "admin", "manager", "hr", "hr"] },
+  { label: "Sales", icon: FaChartLine, path: "/sales", role: ["superadmin", "admin", "manager", "sales"] },
+  { label: "Training", icon: FaChalkboardTeacher, path: "/training", role: ["superadmin", "admin", "manager", "hr", "trainer"] },
+  { label: "Telecom", icon: FaPhoneAlt, path: "/telecom", role: ["superadmin", "admin", "manager", "hr"] },
 ];
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -56,7 +56,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       {/* Sidebar Panel */}
       <aside
         className={`
-          fixed top-0 left-0 z-40 h-full w-72 bg-white/90 backdrop-blur-md shadow-xl border-r border-gray-200
+          fixed top-0 left-0 z-40 h-full w-72 bg-white/90 dark:bg-gray-900 backdrop-blur-md shadow-xl border-r border-gray-200 dark:border-gray-700
           flex flex-col p-6 rounded-r-3xl transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:relative md:flex
@@ -66,7 +66,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="text-center shrink-0">
           <div className="flex items-center justify-center gap-2 mb-6">
             <img src={logo} alt="Logo" className="h-10" />
-            <h1 className="text-xl font-extrabold text-purple-700">iSmart</h1>
+            <h1 className="text-xl font-extrabold text-purple-700 dark:text-purple-400">iSmart</h1>
           </div>
 
           <img
@@ -80,10 +80,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             }}
           />
 
-          <div className="text-gray-700 text-sm">
-            <h2 className="font-semibold text-lg text-purple-700">{user?.fullName}</h2>
-            <p className="text-xs">{user?.email}</p>
-            <p className="text-xs mt-1 text-gray-500">
+          <div className="text-gray-700 text-sm dark:text-gray-200">
+            <h2 className="font-semibold text-lg text-purple-700 dark:text-purple-400">{user?.fullName}</h2>
+            <p className="text-xs dark:text-gray-300">{user?.email}</p>
+            <p className="text-xs mt-1 text-gray-500 dark:text-gray-400">
               DOB: {user?.dob ? new Date(user.dob).toLocaleDateString() : "N/A"}
             </p>
           </div>
@@ -107,11 +107,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     }}
                     className={`flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                       isActive
-                        ? "bg-purple-100 text-purple-700 font-semibold"
-                        : "hover:bg-purple-50 text-gray-700"
+                        ? "bg-purple-100 text-purple-700 font-semibold dark:bg-purple-900 dark:text-purple-300"
+                        : "hover:bg-purple-50 text-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
                     }`}
                   >
-                    <Icon className="text-purple-600" />
+                    <Icon className="text-purple-600 dark:text-purple-400" />
                     {label}
                   </button>
                 );
@@ -123,7 +123,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <button
           onClick={handleLogout}
           disabled={loading}
-          className="mt-6 py-3 px-4 bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-semibold
+          className="mt-6 py-3 px-4 bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-purple-700 dark:to-indigo-600 text-white font-semibold
                    rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 disabled:opacity-60"
         >
           <FaSignOutAlt />
@@ -135,7 +135,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       {isOpen && (
         <div
           onClick={() => toggleSidebar(false)}
-          className="fixed inset-0 z-30 md:hidden bg-transparent backdrop-blur-sm"
+          className="fixed inset-0 z-30 md:hidden bg-black/20 backdrop-blur-sm dark:bg-black/40"
         />
       )}
     </>

@@ -10,7 +10,7 @@ import {
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import useRegister from "../../hooks/user/useSignUp";
-import logo from "../../assets/logoNew.png";
+import logo from "../../assets/logoNew.svg";
 import bannerImage from "../../assets/banner-image.png";
 
 // Validation schema

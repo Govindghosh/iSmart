@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaUser, FaLock } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import useLogin from "../../hooks/user/useLogin";
-import logo from "../../assets/logoNew.png";
+import logo from "../../assets/logoNew.svg";
 import bannerImage from "../../assets/banner-image.png";
 
 const FormGoogleLogin = () => {
