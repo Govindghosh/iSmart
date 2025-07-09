@@ -11,8 +11,8 @@ import Layout from "../layouts/Layout";
 import { fetchAllUsers } from "../store/userSlice";
 import { useCurrentUser } from "../hooks/user/useCurrentUser";
 import { useAllUsers } from "../hooks/user/useAllUsers";
-import UserProfileCard from "../components/UserProfileCard";
-import AllUsersList from "../components/AllUsersList";
+import UserProfileCard from "../components/profile/UserProfileCard";
+import AllUsersList from "../components/profile/AllUsersList";
 
 const USERS_PER_PAGE = 5;
 
@@ -48,7 +48,7 @@ const UserProfilePage = () => {
 
   const filteredUsers = useMemo(() => {
     return allUsers.filter((user) => {
-      const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+      const fullName = user.fullName?.toLowerCase() || "";
       return (
         fullName.includes(debouncedQuery.toLowerCase()) ||
         user.email.toLowerCase().includes(debouncedQuery.toLowerCase())
@@ -116,7 +116,7 @@ const UserProfilePage = () => {
 
         {status === "loading" && renderSkeleton()}
         {status === "failed" && renderError()}
-        {status === "succeeded" && <UserProfileCard user={currentUser} />}
+        {status === "succeeded" && currentUser && <UserProfileCard user={currentUser} />}
       </div>
 
       {isPrivileged && (

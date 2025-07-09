@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
           <div className="flex-grow">{children}</div>
 
           <footer className="mt-auto text-sm text-center text-zinc-500 pt-6">
-            © 2025 Add God PVT LTD. All rights reserved.
+            © 2025 iSmart. All rights reserved.
           </footer>
         </main>
       </div>

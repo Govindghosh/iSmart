@@ -1,20 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import newLogo from "../assets/newLogoAnimation.mp4";
+import newLogoSmall from "../assets/newLogoAnimationSmall.mp4";
 
 const AnimatedLogo = ({ onComplete }) => {
   const videoRef = useRef(null);
   const [animationState, setAnimationState] = useState("enter");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    // Detect small screen
+    const checkScreen = () => {
+      setIsSmallScreen(window.innerWidth <= 640); // Tailwind's sm breakpoint
+    };
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-
     if (!video) return;
-
     video.muted = true; // Allow autoplay
     video.playsInline = true; // For iOS
-    video.currentTime = 3; // Start from timestamp
-
     const handleAutoplay = async () => {
       try {
         await video.play();
@@ -22,25 +30,17 @@ const AnimatedLogo = ({ onComplete }) => {
         console.error("Autoplay failed:", err);
       }
     };
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 6) {
-        video.pause();
-        setAnimationState("exit");
-
-        // Call optional callback when finished
-        if (onComplete) onComplete();
-      }
+    const handleEnded = () => {
+      setAnimationState("exit");
+      if (onComplete) onComplete();
     };
-
     video.addEventListener("loadedmetadata", handleAutoplay);
-    video.addEventListener("timeupdate", handleTimeUpdate);
-
+    video.addEventListener("ended", handleEnded);
     return () => {
       video.removeEventListener("loadedmetadata", handleAutoplay);
-      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("ended", handleEnded);
     };
-  }, [onComplete]);
+  }, [onComplete, isSmallScreen]);
 
   const variants = {
     enter: {
@@ -75,7 +75,7 @@ const AnimatedLogo = ({ onComplete }) => {
         >
           <video
             ref={videoRef}
-            src={newLogo}
+            src={isSmallScreen ? newLogoSmall : newLogo}
             className="w-full h-full object-cover pointer-events-none"
             preload="auto"
             playsInline

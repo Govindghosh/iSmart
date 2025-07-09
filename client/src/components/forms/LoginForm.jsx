@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaUser, FaLock } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import useLogin from "../../hooks/user/useLogin";
-import logo from "../../assets/logoNew.svg";
+import logo from "../../assets/logoNew.png";
 import bannerImage from "../../assets/banner-image.png";
 
 const LoginForm = () => {
@@ -35,7 +35,7 @@ const LoginForm = () => {
           <div className="flex flex-col items-center mb-8">
             <img src={logo} alt="Logo" className="h-16 object-contain mb-1" />
             <span className="text-xl font-semibold tracking-wide text-gray-800">
-              i <span className="text-[#FF9100]">Smart</span>
+              add <span className="text-[#FF9100]">god</span>
             </span>
             <h1 className="text-2xl font-bold text-gray-800 mt-2">Hello!</h1>
             <p className="text-gray-500 text-sm">Sign in to your account</p>
