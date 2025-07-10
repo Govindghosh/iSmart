@@ -16,7 +16,7 @@
 ## 📸 Project Preview
 
 <p align="center">
-  <img src="client/public/logoNew.png" alt="iSmart Logo" width="120" />
+  <img src="client/public/logoNew.svg" alt="iSmart Logo" width="120" />
   <!-- <img src="path/to/screenshot.png" alt="iSmart Dashboard Screenshot" width="600" /> -->
 </p>
 
